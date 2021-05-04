@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 sudo apt-get -y install nginx
 cat <<EOF | sudo tee /etc/nginx/sites-available/default
