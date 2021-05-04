@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 cd ~
 curl -LO https://github.com/prometheus/node_exporter/releases/download/v0.15.1/node_exporter-0.15.1.linux-amd64.tar.gz
@@ -12,13 +12,11 @@ cat <<EOF | sudo tee /etc/systemd/system/node_exporter.service
 Description=Node Exporter
 Wants=network-online.target
 After=network-online.target
-
 [Service]
 User=node_exporter
 Group=node_exporter
 Type=simple
 ExecStart=/usr/local/bin/node_exporter
-
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -28,7 +26,6 @@ sudo systemctl enable node_exporter
 cat <<EOF | sudo tee /etc/prometheus/prometheus.yml
 global:
   scrape_interval: 15s
-
 scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
@@ -41,8 +38,3 @@ scrape_configs:
 EOF
 sudo systemctl restart prometheus
 sudo systemctl status node_exporter
-
-
-
-
-
