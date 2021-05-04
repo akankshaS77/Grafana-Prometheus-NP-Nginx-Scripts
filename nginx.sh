@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 sudo apt-get -y install nginx
 cat <<EOF | sudo tee /etc/nginx/sites-available/default
@@ -15,7 +15,3 @@ server {
 EOF
 sudo systemctl restart nginx
 systemctl status nginx
-
-
-
-
